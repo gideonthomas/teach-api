@@ -13,7 +13,7 @@ class Category(models.Model):
         verbose_name_plural = "categories"
 
     def __str__(self):
-        return str(self.name)
+        return self.name
 
 
 @python_2_unicode_compatible
@@ -43,8 +43,7 @@ class ClubsGuide(models.Model):
     )
     translation_of = models.ForeignKey(
         "self",
-        help_text="If this is a guide that has been translated from another "
-                  "guide (blank if this is the main guide)",
+        help_text="The main guide that this guide is a translation of, if any",
         related_name="translations",
         on_delete=models.SET_NULL,
         blank=True,
@@ -52,4 +51,4 @@ class ClubsGuide(models.Model):
     )
 
     def __str__(self):
-        return str(self.title)
+        return self.title
