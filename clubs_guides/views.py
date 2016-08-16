@@ -12,9 +12,6 @@ class ClubsGuidesListView(ListAPIView):
     """
     A view that permits a GET to allow listing all the clubs guides
     in the database
-
-    **Route** - `/clubsguides`
-
     """
     queryset = ClubsGuide.objects.all()
     serializer_class = ClubsGuideSerializer
@@ -24,9 +21,6 @@ class ClubsGuideView(RetrieveAPIView):
     """
     A view that permits a GET to allow listing of a single clubs guide
     by providing its id.
-
-    **Route** - `/clubsguides/:id`
-
     """
     queryset = ClubsGuide.objects.all()
     serializer_class = ClubsGuideSerializer
@@ -36,8 +30,6 @@ class CategoryListView(ListAPIView):
     """
     A view that permits a GET to allow listing all the clubs guides
     in the database
-
-    **Route** - `/clubsguides/categories`
 
     **Query Parameters** -
 
@@ -58,6 +50,8 @@ class CategoryListView(ListAPIView):
         else:
             return CategorySerializer
 
+    # Check if the request asks to embed full representations of the clubs
+    # guides that belong to each category
     def is_expand_clubs_guides(self):
         if hasattr(self, "expand_clubs_guides"):
             return self.expand_clubs_guides

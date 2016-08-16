@@ -15,15 +15,16 @@ class TestCategoryListView(TestCase):
         self.clubs_guides = []
         for i in range(3):
             guide = ClubsGuideFactory()
+            # Assign categories alternately to the list of clubs guides
             guide.category = self.categories[i % 2]
             guide.save()
             self.clubs_guides.append(guide)
 
         self.fr_clubs_guide = ClubsGuideFactory(
-            title=' '.join(Faker("words", locale="fr_FR", nb=4).generate({})),
+            title=" ".join(Faker("words", locale="fr_FR", nb=4).generate({})),
             category=self.clubs_guides[0].category,
             translation_of=self.clubs_guides[0],
-            language=u'Fran\xe7ais',
+            language=u"Fran\xe7ais",
         )
         self.fr_clubs_guide.save()
 
