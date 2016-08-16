@@ -28,7 +28,7 @@ urlpatterns = [
     url(r'^admin/', include(teach_admin.urls)),
 
     url(r'^credly/', include('credly.urls')),
-    url(r'^clubsguides/', include('clubs_guides.urls')),
+    url(r'^api/clubsguides/', include('clubs_guides.urls')),
 ]
 
 if settings.IDAPI_ENABLE_FAKE_OAUTH2:
