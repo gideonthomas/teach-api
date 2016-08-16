@@ -14,8 +14,10 @@ urlpatterns = [
     # `/` - Gets a list of clubs guides
     url("^$", ClubsGuidesListView.as_view(), name="clubsguide-list"),
 
-    # `/:pk` - Gets a single clubs guide by its primary key (the named group is
-    # called pk by default in Django) viz. `id`
+    # `/:pk` - Gets a single clubs guide by its primary key, where the named
+    # group is called pk by default in Django, (see
+    # https://docs.djangoproject.com/en/1.10/topics/class-based-views/generic-display/#performing-extra-work)
+    # but represents the clubs guide's `id`
     url(r"^(?P<pk>[0-9]+)", ClubsGuideView.as_view(), name="clubsguide"),
 
     # `/categories` - Gets a list of clubs guide categories which may also
