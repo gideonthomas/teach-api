@@ -1,7 +1,10 @@
 from django.contrib import admin
-from django.forms import ModelForm
+from django.conf import settings
+from django.core.mail import send_mail
+from django.template import Context
 
 from . import models
+from . import email
 import teach.admin as teach_admin
 
 # http://djangotricks.blogspot.com/2013/12/how-to-export-data-as-excel.html
@@ -46,5 +49,32 @@ class ClubAdmin(admin.ModelAdmin):
                     owner_email, 'status', 'denial', 'is_active',)
     list_filter = ('status', 'denial', 'is_active',)
     readonly_fields = (owner_email,)
+
+    def save_model(self, request, obj, form, change):
+        context = Context()
+        super(ClubAdmin, self).save_model(request, obj, form, change)
+        approve_mail, decline_mail = email.approve_club, email.decline_club
+
+        if obj.status == models.Club.APPROVED:
+            send_mail(
+                subject=approve_mail.plaintext.subject.render(context),
+                message=approve_mail.plaintext.body.render(context),
+                html_message=approve_mail.html.body.render(context),
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=settings.TEACH_STAFF_EMAILS,
+                # We don't want send failure to prevent a success response.
+                fail_silently=True,
+            )
+        # We only care about the "unqualified" case for denied clubs
+        elif obj.status == models.Club.DENIED and obj.denial == models.Club.UNQUALIFIED:
+            send_mail(
+                subject=decline_mail.plaintext.subject.render(context),
+                message=decline_mail.plaintext.body.render(context),
+                html_message=decline_mail.html.body.render(context),
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=settings.TEACH_STAFF_EMAILS,
+                # We don't want send failure to prevent a success response.
+                fail_silently=True,
+            )
 
 teach_admin.site.register(models.Club, ClubAdmin)

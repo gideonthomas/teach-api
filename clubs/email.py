@@ -1,32 +1,41 @@
-CREATE_MAIL_SUBJECT = 'Thanks for joining the global movement to teach the web!'
+from django.template.loader import get_template
 
-CREATE_MAIL_BODY = """\
-%(username)s,
 
-Thanks for your interest in teaching the web! We are thrilled that you have taken the first step in your journey to becoming a Mozilla Club Captain.
+class EmailTemplateContents:
+    pass
 
-Once your application is approved, a member of our team will get in touch with you to confirm that your club has been approved.
 
-If you have any questions you can send an email to teachtheweb@mozillafoundation.org, tweet @MozLearn or using hashtag #teachtheweb.
+class EmailTemplate:
+    def __init__(
+        self,
+        plaintext_subject='',
+        plaintext_body='', html_body=None,
+    ):
+        self.plaintext = EmailTemplateContents()
+        self.plaintext.subject = plaintext_subject
+        self.plaintext.body = plaintext_body
+        self.html = EmailTemplateContents()
+        self.html.body = html_body
 
-Mozilla Clubs team
-"""
 
-CREATE_MAIL_STAFF_SUBJECT = 'Please review: new club has been submitted'
+create_club = EmailTemplate(
+    plaintext_subject=get_template('clubs/email/create_club_user/subject.txt'),
+    plaintext_body=get_template('clubs/email/create_club_user/body.txt'),
+)
 
-CREATE_MAIL_STAFF_BODY = """\
-%(username)s would like to add their Club to the map.
+create_club_staff = EmailTemplate(
+    plaintext_subject=get_template('clubs/email/create_club_staff/subject.txt'),
+    plaintext_body=get_template('clubs/email/create_club_staff/body.txt'),
+)
 
-Name: %(club_name)s
-Location: %(club_location)s
-Website: %(club_website)s
-Description: %(club_description)s
-Email: %(email)s
+approve_club = EmailTemplate(
+    plaintext_subject=get_template('clubs/email/approve_club/subject.txt'),
+    plaintext_body=get_template('clubs/email/approve_club/body.txt'),
+    html_body=get_template('clubs/email/approve_club/body.html'),
+)
 
-This club is currently in a pending state and you can approve or deny it
-for inclusion in the public map at:
-
-%(admin_url)s
-
-You may also want to email them at %(email)s to say hello!
-"""
+decline_club = EmailTemplate(
+    plaintext_subject=get_template('clubs/email/decline_club/subject.txt'),
+    plaintext_body=get_template('clubs/email/decline_club/body.txt'),
+    html_body=get_template('clubs/email/decline_club/body.html'),
+)

@@ -1,0 +1,14 @@
+{{ username }} would like to add their Club to the map.
+
+Name: {{ club_name }}
+Location: {{ club_location }}
+Website: {{ club_website }}
+Description: {{ club_description }}
+Email: {{ email }}
+
+This club is currently in a pending state and you can approve or deny it
+for inclusion in the public map at:
+
+{{ admin_url }}
+
+You may also want to email them at {{ email }} to say hello!

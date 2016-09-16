@@ -1,0 +1,14 @@
+Thank you for your interest in Mozilla Clubs.
+
+Your application to start a Mozilla Club has been denied. The following reasons may have contributed to this decision:
+ - Insufficient information on the application
+ - Topics/focus for the Club is unrelated to web literacy, digital inclusion/equity, working open, and/or 21st century skills
+ - Goals and processes do not align with Mozilla Clubs values (https://learning.mozilla.org/en-US/clubs/about)
+ - Reliance on financial assistance required on application
+
+There are many resources available to teach the web in your community outside of the Mozilla Clubs program:
+ - Our open, free, hands-on curriculum for your Mozilla Club (https://learning.mozilla.org/activities).
+ - Our free, open source tools to learn coding in a really fun way (https://learning.mozilla.org/tools).
+ - Our free, interactive Web Literacy Map (https://learning.mozilla.org/en-US/web-literacy).
+
+If you have any questions or are interested in re-submitting your application after making adjustments, please email us at teachtheweb@mozillafoundation.org.

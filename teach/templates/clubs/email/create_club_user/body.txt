@@ -1,0 +1,9 @@
+{{ username }},
+
+Thanks for your interest in teaching the web! We are thrilled that you have taken the first step in your journey to becoming a Mozilla Club Captain.
+
+Once your application is approved, a member of our team will get in touch with you to confirm that your club has been approved.
+
+If you have any questions you can send an email to teachtheweb@mozillafoundation.org, tweet @MozLearn or using hashtag #teachtheweb.
+
+Mozilla Clubs team

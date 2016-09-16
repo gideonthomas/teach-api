@@ -1,0 +1,20 @@
+Congratulations!
+
+Your club has been approved and we've added it to our global map (https://learning.mozilla.org/clubs/list/). We’re excited to have you join our network of passionate technologists, educators, learners, and volunteers who are committed to increasing web literacy.
+
+What’s next?
+
+1. Learn the basics of Mozilla Clubs: our mission, principles, network and get the skills you need to be a successful Club Captain by completing our online training (http://mozilla.teachable.com/). This training is mandatory for all Club Captains. Share this training with others who are helping facilitate your club events.
+Please create an account to access the platform and enroll in the “Mozilla Clubs Training” course. Once enrolled, you will receive instructions to proceed with the training. Make sure that the messages you get from the platform are not flagged as spam.
+
+2. Create an account on our forum (https://forum.learning.mozilla.org/c/mozilla-clubs) to connect with other Club Captains, collaborate on club resources, and find useful tips or links that will help you with your Mozilla Club. Feel free to use this space to share updates, successes or challenges, as well.
+
+3. Review these resources:
+ - Mozilla Clubs Branding Guidelines (http://mozilla.github.io/learning-networks/clubs/branding-guidelines/)
+ - The guide for your first month as a Mozilla Club Captain (http://mozilla.github.io/mozilla-club-guides/your-first-month-as-a-club-captain-without-rc/)
+ - Our open, free, hands-on curriculum for your Mozilla Club (https://learning.mozilla.org/activities)
+ - Our free, open source tools to learn coding in a really fun way (https://learning.mozilla.org/tools)
+
+Join the Mozilla Club Facebook group (https://www.facebook.com/groups/mozillaclubs/) and tweet with the community at #teachtheweb (https://twitter.com/search?f=tweets&vertical=default&q=%23teachtheweb&src=typd).
+
+Welcome to the Mozilla Club Community!

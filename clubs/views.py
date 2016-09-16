@@ -2,10 +2,12 @@ from django.db.models import Q
 from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.core.mail import send_mail
+from django.template import Context
 from rest_framework import serializers, viewsets, permissions
 
 from .models import Club
 from . import email
+
 
 class IsOwnerOrReadOnly(permissions.BasePermission):
     """
@@ -100,20 +102,21 @@ class ClubViewSet(viewsets.ModelViewSet):
             status=Club.PENDING
         )
         send_mail(
-            subject=email.CREATE_MAIL_SUBJECT,
-            message=email.CREATE_MAIL_BODY % {
+            subject=email.create_club.plaintext.subject.render(Context()),
+            message=email.create_club.plaintext.body.render(Context({
                 'username': self.request.user.username,
-                'TEACH_SITE_URL': settings.TEACH_SITE_URL
-            },
+                'TEACH_SITE_URL': settings.TEACH_SITE_URL,
+            })),
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[self.request.user.email],
             # We don't want send failure to prevent a success response.
-            fail_silently=True
+            fail_silently=True,
         )
+
         if settings.TEACH_STAFF_EMAILS:
             send_mail(
-                subject=email.CREATE_MAIL_STAFF_SUBJECT,
-                message=email.CREATE_MAIL_STAFF_BODY % {
+                subject=email.create_club_staff.plaintext.subject.render(Context()),
+                message=email.create_club_staff.plaintext.body.render(Context({
                     'username': self.request.user.username,
                     'full_name': club.full_name,
                     'email': self.request.user.email,
@@ -125,11 +128,11 @@ class ClubViewSet(viewsets.ModelViewSet):
                         settings.ORIGIN,
                         reverse('admin:clubs_club_change', args=(club.id,))
                     )
-                },
+                })),
                 from_email=settings.DEFAULT_FROM_EMAIL,
                 recipient_list=settings.TEACH_STAFF_EMAILS,
                 # We don't want send failure to prevent a success response.
-                fail_silently=True
+                fail_silently=True,
             )
 
     def perform_update(self, serializer):
