@@ -1,4 +1,4 @@
-{{ username }} would like to add their Club to the map.
+Club captain {{ full_name }} would like to add their Club to the map (owned by {{ username }}).
 
 Name: {{ club_name }}
 Location: {{ club_location }}

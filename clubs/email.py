@@ -9,7 +9,8 @@ class EmailTemplate:
     def __init__(
         self,
         plaintext_subject='',
-        plaintext_body='', html_body=None,
+        plaintext_body='',
+        html_body=None,
     ):
         self.plaintext = EmailTemplateContents()
         self.plaintext.subject = plaintext_subject

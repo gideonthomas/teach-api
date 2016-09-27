@@ -51,6 +51,9 @@ class ClubAdmin(admin.ModelAdmin):
     readonly_fields = (owner_email,)
 
     def save_model(self, request, obj, form, change):
+        # Even though the context is empty (normally it contains a dict with
+        # placeholder replacements to occur in the template), Django 1.7 needs
+        # a context parameter passed in mandatorily.
         context = Context()
         super(ClubAdmin, self).save_model(request, obj, form, change)
         approve_mail, decline_mail = email.approve_club, email.decline_club
