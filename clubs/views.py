@@ -101,6 +101,9 @@ class ClubViewSet(viewsets.ModelViewSet):
             owner=self.request.user,
             status=Club.PENDING
         )
+        # Even though the context is empty (normally it contains a dict with
+        # placeholder replacements to occur in the template), Django 1.7 needs
+        # a context parameter passed in mandatorily.
         send_mail(
             subject=email.create_club.plaintext.subject.render(Context()),
             message=email.create_club.plaintext.body.render(Context({
@@ -114,9 +117,6 @@ class ClubViewSet(viewsets.ModelViewSet):
         )
 
         if settings.TEACH_STAFF_EMAILS:
-            # Even though the context is empty (normally it contains a dict with
-            # placeholder replacements to occur in the template), Django 1.7 needs
-            # a context parameter passed in mandatorily.
             send_mail(
                 subject=email.create_club_staff.plaintext.subject.render(Context()),
                 message=email.create_club_staff.plaintext.body.render(Context({
