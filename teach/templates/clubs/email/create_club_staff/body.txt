@@ -6,8 +6,7 @@ Website: {{ club_website }}
 Description: {{ club_description }}
 Email: {{ email }}
 
-This club is currently in a pending state and you can approve or deny it
-for inclusion in the public map at:
+This club is currently in a pending state and you can approve or deny it for inclusion in the public map at:
 
 {{ admin_url }}
 
